@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using RestSharp;
+using RestSharp.Authenticators;
 
 namespace BusBoard.ConsoleApp
 {
@@ -10,6 +13,22 @@ namespace BusBoard.ConsoleApp
   {
     static void Main(string[] args)
     {
-    }
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+            Console.Write("Please enter your bus stop code: ");
+            string busStop = Console.ReadLine();
+
+            string apiCall = $"https://api.tfl.gov.uk/StopPoint/{busStop}/Arrivals";
+
+            var client = new RestClient(apiCall);
+
+            var request = new RestRequest();
+
+            var response = client.Get(request);
+
+            Console.Write(response.Content.ToString());
+
+            Console.ReadLine();
+
+        }
   }
 }
