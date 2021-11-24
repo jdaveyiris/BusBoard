@@ -23,9 +23,12 @@ namespace BusBoard.ConsoleApp
 
             var request = new RestRequest();
 
-            var response = client.Get(request);
+            var response = client.Get<List<Arrival>>(request).Data;
 
-            Console.Write(response.Content.ToString());
+            foreach (Arrival arrival in response)
+            {
+                Console.WriteLine(arrival.ToString());
+            }
 
             Console.ReadLine();
 
