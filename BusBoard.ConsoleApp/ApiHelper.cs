@@ -10,7 +10,7 @@ namespace BusBoard.ConsoleApp
 {
     class ApiHelper
     {
-        public static void CallAPI()
+        public static List<Arrival> CallAPI()
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
             Console.Write("Please enter your bus stop code: ");
@@ -24,11 +24,7 @@ namespace BusBoard.ConsoleApp
 
             var response = client.Get<List<Arrival>>(request).Data;
 
-            foreach (Arrival arrival in response)
-            {
-                Console.WriteLine(arrival.ToString());
-            }
-            Console.ReadLine();
+            return response;
         }
 
 

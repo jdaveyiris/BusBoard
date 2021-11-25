@@ -13,7 +13,7 @@ namespace BusBoard.ConsoleApp
   {
     static void Main(string[] args)
     {
-        ApiHelper.CallAPI();
+            Arrival.ArrivalGenerator(ApiHelper.CallAPI());
     }
   }
 }

@@ -16,9 +16,28 @@ namespace BusBoard.ConsoleApp
 
         public override string ToString()
         {
-            return $"Bus to {destinationName} arriving at {expectedArrival} heading towards {towards}";
+            return $"Bus to {destinationName} arriving in {TimeConverter(expectedArrival)} minutes, heading towards {towards}";
         }
+
+        public static void ArrivalGenerator(List<Arrival> response)
+        {
+            var arrivalSortedList = response.OrderBy(x => x.expectedArrival).ToList();
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine(arrivalSortedList[i].ToString());
+            }
+        }
+
+        public static int TimeConverter(DateTime expectedArrival)
+        {
+            DateTime b = DateTime.Now;
+            double minutesToArrival = expectedArrival.Subtract(b).TotalMinutes;
+            return Convert.ToInt32(minutesToArrival);
+        }
+       
     }
+
+
 
 
 
