@@ -22,7 +22,7 @@ namespace BusBoard.ConsoleApp
         public static void ArrivalGenerator(List<Arrival> response)
         {
             var arrivalSortedList = response.OrderBy(x => x.expectedArrival).ToList();
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < Math.Min(5, arrivalSortedList.Count()); i++)
             {
                 Console.WriteLine(arrivalSortedList[i].ToString());
             }

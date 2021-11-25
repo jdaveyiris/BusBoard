@@ -13,7 +13,11 @@ namespace BusBoard.ConsoleApp
   {
     static void Main(string[] args)
     {
-            Arrival.ArrivalGenerator(ApiHelper.CallAPI());
+        Console.Write("Enter your PostCode: ");
+        string postcode = Console.ReadLine();
+        ApiHelper.CallStopPointAPI(ApiHelper.CallPostcodeAPI(postcode));
+
+        Console.Read();
     }
   }
 }

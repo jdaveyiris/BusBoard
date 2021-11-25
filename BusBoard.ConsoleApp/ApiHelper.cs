@@ -10,13 +10,12 @@ namespace BusBoard.ConsoleApp
 {
     class ApiHelper
     {
-        public static List<Arrival> CallAPI()
+        public static List<Arrival> CallArrivalsAPI(StopPoint stopPoint)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-            Console.Write("Please enter your bus stop code: ");
-            string busStop = Console.ReadLine();
 
-            string apiCall = $"https://api.tfl.gov.uk/StopPoint/{busStop}/Arrivals";
+            string apiString = stopPoint.naptanId.ToString();
+            string apiCall = $"https://api.tfl.gov.uk/StopPoint/{apiString}/Arrivals";
 
             var client = new RestClient(apiCall);
 
@@ -27,6 +26,38 @@ namespace BusBoard.ConsoleApp
             return response;
         }
 
+        public static void CallStopPointAPI(Postcode latlon)
+        {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
+            string apiCall = $"https://api.tfl.gov.uk/StopPoint?stopTypes=NaptanPublicBusCoachTram&lat={latlon.latitude}&lon={latlon.longitude}";
+
+            var client = new RestClient(apiCall);
+
+            var request = new RestRequest();
+
+            var response = client.Get<StopPointWrapper>(request).Data;
+
+            foreach (StopPoint stop in response.stopPoints)
+            {
+               Arrival.ArrivalGenerator(CallArrivalsAPI(stop));
+            }
+
+        }
+
+        public static Postcode CallPostcodeAPI(string postcode)
+        {
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            string apiCall = $"https://api.postcodes.io/postcodes/{postcode}";
+
+            var client = new RestClient(apiCall);
+
+            var request = new RestRequest();
+
+            var response = client.Get<PostcodeWrapper>(request).Data;
+
+            return response.result;
+        }
     }
 }
