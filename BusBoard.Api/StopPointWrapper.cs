@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusBoard.ConsoleApp
+namespace BusBoard.Api
 {
-    class PostcodeWrapper
+    public class StopPointWrapper
     {
-        public Postcode result { get; set; }
+        public List<StopPoint> stopPoints { get; set; }
     }
 }

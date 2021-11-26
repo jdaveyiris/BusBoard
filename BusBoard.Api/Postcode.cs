@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusBoard.ConsoleApp
+namespace BusBoard.Api
 {
-    class Postcode
+    public class Postcode
     {
         public string latitude { get; set; }
 

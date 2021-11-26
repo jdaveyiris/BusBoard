@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusBoard.ConsoleApp
+namespace BusBoard.Api
 {
-    class StopPoint
+    public class StopPoint
     {
         public string naptanId { get; set; }
 

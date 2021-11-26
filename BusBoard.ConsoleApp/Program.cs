@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using RestSharp;
 using RestSharp.Authenticators;
+using BusBoard.Api;
 
 namespace BusBoard.ConsoleApp
 {

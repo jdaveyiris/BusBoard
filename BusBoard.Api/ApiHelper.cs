@@ -6,9 +6,10 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusBoard.ConsoleApp
+
+namespace BusBoard.Api
 {
-    class ApiHelper
+    public class ApiHelper
     {
         public static List<Arrival> CallArrivalsAPI(StopPoint stopPoint)
         {
