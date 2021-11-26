@@ -1,10 +1,22 @@
-﻿@model BusBoard.Web.ViewModels.BusInfo
+﻿@model List<BusBoard.Api.Arrival>
 @{
-  ViewBag.Title = "Bus Information";
+    ViewBag.Title = "Bus Information";
 }
 
 <h2>BusInfo</h2>
 
 <div class="row">
-    <p>You entered postcode @Model.PostCode</p>
+    
+    
+        <ul>
+            @{ 
+                foreach (var arrival in Model)
+                {
+                        <li> @arrival.ToString() </li>
+                }
+             }
+        </ul>
+    
+
+
 </div>

@@ -27,7 +27,7 @@ namespace BusBoard.Api
             return response;
         }
 
-        public static void CallStopPointAPI(Postcode latlon)
+        public static List<Arrival> CallStopPointAPI(Postcode latlon)
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
@@ -39,11 +39,13 @@ namespace BusBoard.Api
 
             var response = client.Get<StopPointWrapper>(request).Data;
 
+            List<Arrival> returnList = new List<Arrival>();
+
             foreach (StopPoint stop in response.stopPoints)
             {
-               Arrival.ArrivalGenerator(CallArrivalsAPI(stop));
+               returnList.AddRange(CallArrivalsAPI(stop));
             }
-
+            return returnList;
         }
 
         public static Postcode CallPostcodeAPI(string postcode)
