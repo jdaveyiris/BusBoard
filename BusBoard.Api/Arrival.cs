@@ -14,9 +14,11 @@ namespace BusBoard.Api
 
         public string towards { get; set; }
 
+        public string stationName { get; set; }
+
         public override string ToString()
         {
-            return $"Bus to {destinationName} arriving in {TimeConverter(expectedArrival)} minutes, heading towards {towards}";
+            return $"Stop: {stationName}. Bus to {destinationName} arriving in {TimeConverter(expectedArrival)} minutes, heading towards {towards}";
         }
 
         public static void ArrivalGenerator(List<Arrival> response)
@@ -35,6 +37,11 @@ namespace BusBoard.Api
             return Convert.ToInt32(minutesToArrival);
         }
        
+        public int MinutesToArrival()
+        {
+            return TimeConverter(expectedArrival);
+        }
+        
     }
 
 

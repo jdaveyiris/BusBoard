@@ -45,7 +45,8 @@ namespace BusBoard.Api
             {
                returnList.AddRange(CallArrivalsAPI(stop));
             }
-            return returnList;
+            var sortedReturnList = returnList.OrderBy(x => x.expectedArrival).ToList();
+            return sortedReturnList;
         }
 
         public static Postcode CallPostcodeAPI(string postcode)

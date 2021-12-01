@@ -5,18 +5,51 @@
 
 <h2>BusInfo</h2>
 
-<div class="row">
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Station Name</th>
+                <th scope="col">Destination</th>
+                <th scope="col">Expected Time</th>
+                <th scope="col">Heading Towards</th>
+            </tr>
+        </thead>
+        <tbody>
+        @{ 
+            foreach (var arrival in Model)
+            {
+                <tr>
+                    <td class="text-primary">@arrival.stationName</td>
+                    <td class="text-primary">@arrival.destinationName</td>
+                    <td class="text-primary">@arrival.MinutesToArrival() minutes</td>
+                    <td class="text-success">@arrival.towards</td>
+                </tr>
+            }
+
+        }
+        </tbody>
+    </table>
+
+</div>
+
+
+
+
+
+@*<div class="row">
+       
     
-    
-        <ul>
+        <ul class="list-group list-group-flush">
             @{ 
                 foreach (var arrival in Model)
                 {
-                        <li> @arrival.ToString() </li>
+                        <li class="list-group-item"> @arrival.ToString() </li>
                 }
              }
         </ul>
     
 
 
-</div>
+</div>*@

@@ -6,6 +6,7 @@
 <div class="jumbotron">
     <h1>BusBoard</h1>
     <p class="lead">For all your bus info needs. Enter a postcode below and click enter to see bus times for that location.</p>
+    <hr class="my-4"><p>Tell us your PostCode for the answers to your bus-related dreams</p>
 </div>
 
 <div class="row">
@@ -16,7 +17,8 @@
             <legend>Post Code:</legend>
             @Html.TextBoxFor(m => m.Postcode)
 
-            <input type="submit" value="Get Bus Info" />
+            <input class="btn btn-primary" type="submit" value="Get Bus Info" />
+
         </fieldset>
         }
     </div>
